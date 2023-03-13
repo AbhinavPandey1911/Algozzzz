@@ -1,0 +1,55 @@
+/* 
+1656 C
+ 1) we can observe that 0&1 if they exist together 
+ its never possible to make the array elements equal
+ as x>=2
+ 2) To make the array equal we can see the smallest 
+ element if its 0 then try to divide all the elements
+ with a[i] for each i
+  else if smallest element is 1
+  try to divide all the elements by a[i]-1, but here
+if you have consecutive elements then its not possible
+
+*/
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int t;
+    cin>>t;
+    while(t--)
+    { 
+        int n;
+        cin>>n;
+        int a[n];
+        for(int i=0;i<n;i++)
+             cin>>a[i];
+        sort(a,a+n);
+      int fl=0;
+        if(a[0]!=1)
+        {
+            for(int i=0;i<n;i++)
+                 if(a[i]==1)
+                     {fl=1; break;}
+            if(fl)
+                cout<<"NO\n";
+            else cout<<"YES\n";
+        }
+       else
+        {
+            for(int i=0;i<n-1;i++)
+            {
+                if(a[i]==a[i+1]-1)
+                     {fl=1; break;}
+            }
+            if(fl)
+                cout<<"NO\n";
+            else cout<<"YES\n";
+        }
+        
+    }
+    return 0;
+}
